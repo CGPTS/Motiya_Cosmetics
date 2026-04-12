@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>התחברות | NetMap Teva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+    <div class="login-card glass-panel">
+        <div class="login-brand">
+            <div class="login-icon-wrapper">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <h1>NetMap <span>Teva</span></h1>
+            <p>מערכת מיפוי ציוד תקשורת</p>
+        </div>
+        <form id="login-form">
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> אימייל</label>
+                <input type="email" id="email" required placeholder="admin@network.com">
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> סיסמה</label>
+                <input type="password" id="password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-primary btn-block">
+                <i class="fas fa-sign-in-alt"></i> התחברות
+            </button>
+            <p id="error-msg" class="error-text"></p>
+        </form>
+    </div>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
