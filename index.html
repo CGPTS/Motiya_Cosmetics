@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff5fb" />
+  <title>קביעת תורים | סטודיו לק ג'ל</title>
+
+  <script>
+    (function () {
+      try {
+        var k = 'gel-nails-theme';
+        var t = localStorage.getItem(k);
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', t === 'dark' ? '#1a0c14' : '#fff5fb');
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-shell" role="presentation">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="step-dots" id="stepDots">
+      <span class="dot active" data-step="1">1</span>
+      <span class="dot" data-step="2">2</span>
+      <span class="dot" data-step="3">3</span>
+      <span class="dot" data-step="4">4</span>
+      <span class="dot" data-step="5">5</span>
+      <span class="dot" data-step="6">6</span>
+    </div>
+  </div>
+
+  <!-- Theme Toggle -->
+  <button
+    type="button"
+    class="theme-toggle"
+    id="themeToggle"
+    role="switch"
+    aria-checked="false"
+    aria-label="החלפת מצב תצוגה"
+    title="מצב כהה / בהיר"
+  >
+    <span class="theme-toggle__label">בהיר</span>
+    <span class="theme-toggle__track" aria-hidden="true">
+      <span class="theme-toggle__icons"><span>☀</span><span>☽</span></span>
+      <span class="theme-toggle__thumb"></span>
+    </span>
+  </button>
+
+  <main class="wizard">
+
+    <!-- ======= STEP 1: WELCOME ======= -->
+    <section class="step active" id="step1" data-step="1">
+      <div class="step-card">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">N</div>
+          <h1 class="brand-title">סטודיו לק ג'ל</h1>
+          <p class="brand-subtitle">דיוק, איכות וסטייל בכל ציפורן</p>
+        </div>
+
+        <div class="welcome-box">
+          <h3>ברוכה הבאה למערכת קביעת התורים</h3>
+          <p>
+            סטודיו פרטי וביתי המתמחה בלק ג'ל, בנייה ושימור ציפורניים.
+            השירות מותאם אישית לכל לקוחה, בסביבה נעימה, נקייה ומקצועית.
+          </p>
+          <p class="motto">
+            <strong>מקבלים את הלקוחה בסטייל, ומשחררים אותה מאושרת.</strong>
+          </p>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery-card g1"><span>גלריה 1</span></div>
+          <div class="gallery-card g2"><span>גלריה 2</span></div>
+          <div class="gallery-card g3"><span>גלריה 3</span></div>
+          <div class="gallery-card g4"><span>גלריה 4</span></div>
+        </div>
+
+        <div class="actions center">
+          <button type="button" class="btn btn-primary" data-next>התחילי הזמנה ←</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= STEP 2: PERSONAL INFO ======= -->
+    <section class="step" id="step2" data-step="2">
+      <div class="step-card">
+        <h1>פרטים אישיים</h1>
+        <p class="subtitle">שם פרטי, שם משפחה וטלפון ליצירת קשר</p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="firstName">שם פרטי *</label>
+            <input type="text" id="firstName" placeholder="לדוגמה: שירה" autocomplete="given-name" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">שם משפחה *</label>
+            <input type="text" id="lastName" placeholder="לדוגמה: כהן" autocomplete="family-name" required />
+          </div>
+          <div class="form-group full">
+            <label for="phone">טלפון נייד *</label>
+            <input type="tel" id="phone" placeholder="050-0000000" autocomplete="tel" required />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" data-prev>→ חזרה</button>
+          <button type="button" class="btn btn-primary" data-next>המשך ←</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= STEP 3: SERVICE SELECTION ======= -->
+    <section class="step" id="step3" data-step="3">
+      <div class="step-card">
+        <h1>בחירת טיפול</h1>
+        <p class="subtitle">בחרי את סוג הטיפול הרצוי</p>
+
+        <div id="servicesList" class="services-list">
+          <!-- service cards rendered by JS -->
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" data-prev>→ חזרה</button>
+          <button type="button" class="btn btn-primary" data-next>המשך ←</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= STEP 4: CALENDAR + TIME ======= -->
+    <section class="step" id="step4" data-step="4">
+      <div class="step-card">
+        <h1>בחירת תאריך ושעה</h1>
+        <p class="subtitle">לחצי על תאריך פנוי כדי לראות שעות זמינות</p>
+
+        <div class="calendar-legend">
+          <span><i class="legend-dot avail"></i> פנוי</span>
+          <span><i class="legend-dot busy"></i> תפוס</span>
+          <span><i class="legend-dot picked"></i> נבחר</span>
+        </div>
+
+        <div class="calendar-nav">
+          <button type="button" class="btn btn-ghost btn-sm" id="prevMonth">→ חודש קודם</button>
+          <h2 id="monthTitle">—</h2>
+          <button type="button" class="btn btn-ghost btn-sm" id="nextMonth">חודש הבא ←</button>
+        </div>
+
+        <div class="weekdays">
+          <span>ראשון</span><span>שני</span><span>שלישי</span><span>רביעי</span>
+          <span>חמישי</span><span>שישי</span><span>שבת</span>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+        <div class="time-slots" id="timeSlotsWrap" hidden>
+          <h3 id="timeSlotsTitle"></h3>
+          <div class="time-slots-grid" id="timeSlotsGrid"></div>
+        </div>
+
+        <div class="picked-summary" id="pickedSummary" hidden></div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" data-prev>→ חזרה</button>
+          <button type="button" class="btn btn-primary" data-next>המשך ←</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= STEP 5: SUMMARY + CONFIRM ======= -->
+    <section class="step" id="step5" data-step="5">
+      <div class="step-card">
+        <h1>סיכום ואישור הזמנה</h1>
+        <p class="subtitle">בדקי את הפרטים, אשרי את התקנון ושלחי הזמנה</p>
+
+        <div class="summary-card" id="summaryCard"></div>
+
+        <label class="confirm-line">
+          <input type="checkbox" id="confirmCheck" />
+          <span>בסימון הווי הריני מאשרת את כל פרטי התור הרשומים מעלה.</span>
+        </label>
+
+        <div class="cancel-policy">
+          <strong>במידה של ביטול, יש לבטל עד 24 שעות מראש ללא תשלום, מעבר ל-24 שעות מראש יחול דמי ביטול של 50% מהתור.</strong>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" data-prev>→ חזרה</button>
+          <button type="button" class="btn btn-primary" id="submitBtn" disabled>שריון תור ←</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= STEP 6: SUCCESS ======= -->
+    <section class="step" id="step6" data-step="6">
+      <div class="step-card center">
+        <div class="success-anim">
+          <div class="success-circle">
+            <svg viewBox="0 0 52 52" aria-hidden="true">
+              <circle cx="26" cy="26" r="25" fill="none"></circle>
+              <path d="M14 27 l8 8 l16 -16" fill="none"></path>
+            </svg>
+          </div>
+        </div>
+
+        <h1>התור שוריין בהצלחה</h1>
+        <p class="subtitle">קובץ אישור הזמנה הורד אוטומטית למחשב</p>
+
+        <div class="order-id">
+          מספר הזמנה: <strong id="orderIdLabel">—</strong>
+        </div>
+
+        <div class="success-tips">
+          <div><strong>שמרו את האישור</strong> — הוא נשלח אליכן כקובץ.</div>
+          <div><strong>הגעה בזמן</strong> — מומלץ להגיע 5 דקות לפני התור.</div>
+          <div><strong>ביטול</strong> — עד 24 שעות מראש ללא חיוב.</div>
+        </div>
+
+        <div class="actions center">
+          <button type="button" class="btn btn-ghost" id="downloadAgainBtn">📥 הורדה חוזרת</button>
+          <button type="button" class="btn btn-primary" id="newBookingBtn">תור חדש 🔄</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay" hidden>
+    <div class="spinner"></div>
+    <p id="loadingText">שומרת תור...</p>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/emailjs-config.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
